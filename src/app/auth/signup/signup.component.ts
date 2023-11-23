@@ -45,6 +45,18 @@ export class SignupComponent {
     console.log(this.loginForm.value);
   }
 
+  onClick(){
+    this.loginForm.value.name = this.loginForm.value.name.trim();
+    this.loginForm.value.email = this.loginForm.value.email.trim();
+    this.loginForm.value.phone = this.loginForm.value.phone.trim();
+    this.loginForm.value.password = this.loginForm.value.password.trim();
+    
+    this.dbService.signupAsimetrico(this.loginForm.value).subscribe((data: any) => {
+      console.log(data["msg"]);
+    });
+    console.log(this.loginForm.value);
+  }
+
   get name() {
     return this.loginForm.get('name');
   }

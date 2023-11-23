@@ -1,1 +1,61 @@
-<p>signin works!</p>
+<div>
+    <h1>Inicia Sesion</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Correo</mat-label>
+                <input matInput type="text" id="email" formControlName="email" required>
+            </mat-form-field>
+
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                <div *ngIf="email?.errors?.['email'] || email?.errors?.['invalidEmail']">
+                    <mat-error>
+                        El correo no es valido
+                    </mat-error>
+                </div>
+                <div *ngIf="email?.errors?.['required']">
+                    <mat-error>
+                        Ingresa tu correo electronico
+                    </mat-error>
+                </div>
+
+            </div>
+        </div>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" id="password" formControlName="password" required>
+
+            </mat-form-field>
+
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+                <div *ngIf="password?.errors?.['invalidPassword'] || password?.errors?.['minlength']">
+                   <mat-error>
+
+                        Contraseña no valida
+                    </mat-error>
+                </div>
+                
+                <div *ngIf="password?.errors?.['required']">
+                    <mat-error>
+
+                        Ingresa tu contraseña
+                    </mat-error>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-login" type="submit" [disabled]="!loginForm.valid">Login con cifrado simetrico</button>
+        <br>
+        <br>
+        <button class="btn-login" type="button" (click)="onClick()" [disabled]="!loginForm.valid">Login con cifrado
+            asimetrico</button>
+        <br>
+        <br>
+        <a routerLink="/signup">Registrate</a>
+
+    </form>
+</div>

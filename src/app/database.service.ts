@@ -17,6 +17,21 @@ export class DatabaseService {
     .pipe(catchError(this.handleError<User>('signup')));
   }
 
+  signupAsimetrico(user: User) {
+    return this.http.post<User>('http://localhost:3000/users/signupAsimetrico', user, this.httpOptions)
+    .pipe(catchError(this.handleError<User>('signup')));
+  }
+
+  signin(user: User) {
+    return this.http.post<User>('http://localhost:3000/users/signin', user, this.httpOptions)
+    .pipe(catchError(this.handleError<User>('signup')));
+  }
+
+  signinAsimetrico(user: User) {
+    return this.http.post<User>('http://localhost:3000/users/signinAsimetrico', user, this.httpOptions)
+    .pipe(catchError(this.handleError<User>('signup')));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   

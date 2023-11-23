@@ -1,18 +1,18 @@
-<div>
+<div >
     <h1>Registro</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            
+
         <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Nombre completo</mat-label>
-            <input matInput id="name" formControlName="name" required>
+            <mat-form-field  appearance="fill">
+                <mat-label>Nombre completo</mat-label>
+                <input matInput id="name" formControlName="name" required>
             </mat-form-field>
 
             <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert alert-danger">
-                
+
                 <div *ngIf="name?.errors?.['required']">
                     <mat-error>
-                    Ingresa tu nombre
+                        Ingresa tu nombre
                     </mat-error>
                 </div>
                 <div *ngIf="name?.errors?.['minlength']">
@@ -24,67 +24,92 @@
             </div>
         </div>
         <div>
-                <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill">
                 <mat-label>Correo</mat-label>
                 <input matInput type="text" id="email" formControlName="email" required>
-                </mat-form-field>
-    
-                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
-                    <div *ngIf="email?.errors?.['email'] || email?.errors?.['invalidEmail']">
-                        <mat-error>
-                            El correo no es valido
-                        </mat-error>
-                    </div>
-                    <div *ngIf="email?.errors?.['required']">
-                       <mat-error>
+            </mat-form-field>
+
+            <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger">
+                <div *ngIf="email?.errors?.['email'] || email?.errors?.['invalidEmail']">
+                    <mat-error>
+                        El correo no es valido
+                    </mat-error>
+                </div>
+                <div *ngIf="email?.errors?.['required']">
+                    <mat-error>
                         Ingresa tu correo electronico
-                       </mat-error> 
-                    </div>
-                   
-                </div> 
+                    </mat-error>
+                </div>
+
             </div>
+        </div>
 
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput  type="password" id="password" formControlName="password" required>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" id="password" formControlName="password" required>
 
-                    </mat-form-field>
-        
-                    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
-                        <div *ngIf="password?.errors?.['invalidPassword']">
-                            La contraseña debe contener al menos un numero, un caracter especial y una letra
-                        </div>
-                        <div *ngIf="password?.errors?.['minlength']">
-                            La contraseña debe contener al menos 10 caracteres
-                        </div>
-                        <div *ngIf="password?.errors?.['required']">
-                            Ingresa tu contraseña
-                        </div>
-                    </div>
+            </mat-form-field>
+
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+                <div *ngIf="password?.errors?.['invalidPassword']">
+                    <mat-error>
+
+                        La contraseña debe contener al menos un numero, un caracter especial y una letra
+                    </mat-error>
+                </div>
+                <div *ngIf="password?.errors?.['minlength']">
+                    <mat-error>
+
+                        La contraseña debe contener al menos 10 caracteres
+                    </mat-error>
+                </div>
+                <div *ngIf="password?.errors?.['required']">
+                    <mat-error>
+
+                        Ingresa tu contraseña
+                    </mat-error>
+                </div>
             </div>
+        </div>
 
-            <div>
-                <mat-form-field appearance="fill">
-                    <mat-label>Numero celular</mat-label>
-                    <input matInput  type="text" id="phone" formControlName="phone" required maxlength="10">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Numero celular</mat-label>
+                <input matInput type="text" id="phone" formControlName="phone" required maxlength="10">
 
 
-                    </mat-form-field>
-        
-                    <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="alert alert-danger">
-                        <div *ngIf="phone?.errors?.['minlength']">
-                            El numero de celular debe contener al menos 10 caracteres
-                        </div>
-                        <div *ngIf="phone?.errors?.['pattern']">
-                            El numero de celular no es valido
-                        </div>
-                        <div *ngIf="phone?.errors?.['required']">
-                            Ingresa tu numero de celular
-                        </div>
-                    </div>
+            </mat-form-field>
+
+            <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="alert alert-danger">
+                <div *ngIf="phone?.errors?.['minlength']">
+                    <mat-error>
+
+                        El numero de celular debe contener al menos 10 caracteres
+                    </mat-error>
+                </div>
+                <div *ngIf="phone?.errors?.['pattern']">
+                    <mat-error>
+
+                        El numero de celular no es valido
+                    </mat-error>
+                </div>
+                <div *ngIf="phone?.errors?.['required']">
+                    <mat-error>
+
+                        Ingresa tu numero de celular
+                    </mat-error>
+                </div>
             </div>
+        </div>
 
-        <button class="btn-login" type="submit" [disabled]="!loginForm.valid">Login</button>
+        <button class="btn-login" type="submit" [disabled]="!loginForm.valid">Registro con cifrado simetrico</button>
+        <br>
+        <br>
+        <button class="btn-login" type="button" (click)="onClick()" [disabled]="!loginForm.valid">Registro con cifrado
+            asimetrico</button>
+        <br>
+        <br>
+        <a routerLink="/signin">Ya tienes cuenta? Inicia Sesion</a>
     </form>
 </div>
